@@ -1,0 +1,40 @@
+﻿<Window x:Class="_236kPractos.AddFilmWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_236kPractos"
+        mc:Ignorable="d"
+        Title="AddFilmWindow" Height="220" Width="650">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="5" Width="300">
+                <TextBlock Text="Название фильма"/>
+                <TextBox Text="{Binding Name}"/>
+                <TextBlock Text="Режисер"/>
+                <TextBox Text="{Binding Rejiser}"/>
+                <TextBlock Text="Длительность, мин"/>
+                <TextBox Text="{Binding Duration}"/>
+                <TextBlock Text="Год выпуска"/>
+                <TextBox Text="{Binding Year}"/>
+            </StackPanel>
+
+            <StackPanel  Margin="5" Width="300">
+                <TextBlock Text="Жанр"/>
+                <TextBox Text="{Binding Genre}"/>
+                <TextBlock Text="Страна"/>
+                <TextBox Text="{Binding Country}"/>
+                <TextBlock Text="Описание" />
+                <TextBox Text="{Binding Description}" Height="50" TextWrapping="Wrap"/>
+            </StackPanel>
+            
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="➕ Добавить" Click="Add_Click" Margin="7" Width="150" Height="20" Background="Bisque"/>
+            <Button Content="❌ Отмена" Click="Cancel_Click" Margin="7" Width="150" Height="20" Background="Bisque"/>
+        </StackPanel>
+        
+
+    </StackPanel>
+</Window>

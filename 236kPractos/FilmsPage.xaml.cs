@@ -35,5 +35,47 @@ namespace _236kPractos
             films = db.Films.Local.ToObservableCollection();
             FilmGrid.ItemsSource = films;
         }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+            if (FilmGrid.SelectedItem is Film f)
+            {
+                var q = MessageBox.Show("Вы точно хотите удалить фильм?",
+                    "Удаление",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (q == MessageBoxResult.Yes) 
+                    films.Remove(f);
+                db.SaveChanges();
+            }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            AddFilmWindow w = new AddFilmWindow();
+            Film f = new Film();
+            w.DataContext = f;
+
+            if (w.ShowDialog() == true)
+            {
+                films.Add(f);
+                db.SaveChanges();
+            }
+
+        }
+
+        private void FilmGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FilmGrid.SelectedItem is Film f)
+            {
+                this.DataContext = f;
+            }
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            db.SaveChanges();
+        }
     }
 }

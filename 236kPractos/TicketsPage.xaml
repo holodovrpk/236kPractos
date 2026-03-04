@@ -10,5 +10,50 @@
 
     <StackPanel>
         <TextBlock Text="Билеты" FontSize="24" />
+
+        <DataGrid x:Name="TicketGrid" AutoGenerateColumns="False" Height="150"
+              >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер билета" Width="200"
+                                Binding="{Binding TicketId}"/>
+                <DataGridTextColumn Header="Фильм" Width="150" 
+                                Binding="{Binding FilmId}"/>
+                <DataGridTextColumn Header="Дата сеанса" Width="140" 
+                                Binding="{Binding date}"/>
+                <DataGridTextColumn Header="Цена" Width="120" 
+                                Binding="{Binding Price}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="5" Width="300">
+                <TextBlock Text="Номер билета"/>
+                <TextBox Text="{Binding Ticket}" IsReadOnly="True"/>
+                <TextBlock Text="Фильм"/>
+                <TextBox Text="{Binding FilmId}"/>
+                <TextBlock Text="Зал"/>
+                <TextBox Text="{Binding HallId}"/>
+                <TextBlock Text="Цена"/>
+                <TextBox Text="{Binding Price}"/>
+            </StackPanel>
+
+            <StackPanel  Margin="5" Width="300">
+                <TextBlock Text="Дата сеанса"/>
+                <TextBox Text="{Binding date}"/>
+                <TextBlock Text="Ряд"/>
+                <TextBox Text="{Binding Row}"/>
+                <TextBlock Text="Место" />
+                <TextBox Text="{Binding Place}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button Content="🗑️ Удалить"  Margin="7" Width="150" Height="20" Background="Bisque"/>
+            <Button Content="➕ Продать"  Margin="7" Width="150" Height="20" Background="Bisque"/>
+            <Button Content="💾 Сохранить изменения"  Margin="7" Width="150" Height="20" Background="Bisque"/>
+        </StackPanel>
+
     </StackPanel>
 </Page>
