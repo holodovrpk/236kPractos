@@ -1,5 +1,8 @@
-﻿using System;
+﻿using _236kPractos.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,57 @@ namespace _236kPractos
     /// </summary>
     public partial class TicketsPage : Page
     {
+
+        CinemaContext db = new CinemaContext();
+        ObservableCollection<Ticket> tickets = new ObservableCollection<Ticket>();
+
         public TicketsPage()
         {
             InitializeComponent();
+
+
+            db.Tickets.Include(t => t.Film)
+                .Include(t => t.Hall)
+                .Load();
+
+            tickets = db.Tickets.Local.ToObservableCollection();
+
+            TicketGrid.ItemsSource = tickets;
+
+            BoxFilms.ItemsSource = db.Films.ToList();
+        }
+
+        private void TicketGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TicketGrid.SelectedItem is Ticket t)
+            {
+                DataContext = t;
+            }
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            db.SaveChanges();
+        }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+            if (TicketGrid.SelectedItem is Ticket t)
+            {
+                var q = MessageBox.Show("Вы точно хотите удалить билет?",
+                    "Удаление",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (q == MessageBoxResult.Yes)
+                    tickets.Remove(t);
+                db.SaveChanges();
+            }
+        }
+
+        private void Sell_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
