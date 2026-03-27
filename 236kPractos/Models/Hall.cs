@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace _236kPractos.Models
 { 
     public class Hall
-    {
+    {//
         public int HallId { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
