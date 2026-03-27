@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace _236kPractos.Models
-{
+{ 
     public class Hall
     {
         public int HallId { get; set; }
