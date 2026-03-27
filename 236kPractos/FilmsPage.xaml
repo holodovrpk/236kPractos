@@ -9,9 +9,12 @@
       Title="FilmsPage">
 
     <StackPanel>
-        <TextBlock Text="Фильмы" FontSize="24" />
-
-        <DataGrid x:Name="FilmGrid" AutoGenerateColumns="False" Height="150"
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="Фильмы" FontSize="24" Width="350"/>
+            <TextBlock Text="🔍 Поиск" VerticalAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="txtFind" Width="200" Margin="5"/>
+        </StackPanel>
+    <DataGrid x:Name="FilmGrid" AutoGenerateColumns="False" Height="150"
                   SelectionChanged="FilmGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Width="200"

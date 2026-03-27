@@ -41,7 +41,11 @@
 
 
                 <TextBlock Text="Зал"/>
-                <TextBox Text="{Binding Hall.Name}"/>
+                <ComboBox x:Name="BoxHall"
+                        DisplayMemberPath="Name"
+                        SelectedValuePath="HallId"
+                        SelectedValue="{Binding HallId}" />
+                
                 <TextBlock Text="Цена"/>
                 <TextBox Text="{Binding Price}"/>
             </StackPanel>

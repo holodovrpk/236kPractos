@@ -41,6 +41,7 @@ namespace _236kPractos
             TicketGrid.ItemsSource = tickets;
 
             BoxFilms.ItemsSource = db.Films.ToList();
+            BoxHall.ItemsSource = db.Halls.ToList();    
         }
 
         private void TicketGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,6 +74,20 @@ namespace _236kPractos
 
         private void Sell_Click(object sender, RoutedEventArgs e)
         {
+            Ticket t = new Ticket();
+
+            AddTicketsWindow w = new AddTicketsWindow();
+
+            w.BoxFilms.ItemsSource = db.Films.ToList();
+            w.BoxHall.ItemsSource = db.Halls.ToList();
+
+            w.DataContext = t;
+
+            if (w.ShowDialog() == true)
+            {
+                tickets.Add(t);
+                db.SaveChanges();
+            }
 
         }
     }

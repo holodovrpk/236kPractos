@@ -1,0 +1,46 @@
+﻿<Window x:Class="_236kPractos.AddTicketsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_236kPractos"
+        mc:Ignorable="d"
+        Title="AddTicketsWindow" Height="450" Width="800">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="5" Width="300">
+                
+                <TextBlock Text="Фильм"/>
+
+                <ComboBox x:Name="BoxFilms"
+                DisplayMemberPath="Name"
+                SelectedValuePath="FilmId"
+                SelectedValue="{Binding FilmId}" />
+
+
+                <TextBlock Text="Зал"/>
+                <ComboBox x:Name="BoxHall"
+                DisplayMemberPath="Name"
+                SelectedValuePath="HallId"
+                SelectedValue="{Binding HallId}" />
+
+                <TextBlock Text="Цена"/>
+                <TextBox Text="{Binding Price}"/>
+            </StackPanel>
+
+            <StackPanel  Margin="5" Width="300">
+                <TextBlock Text="Дата сеанса"/>
+                <TextBox Text="{Binding date}"/>
+                <TextBlock Text="Ряд"/>
+                <TextBox Text="{Binding Row}"/>
+                <TextBlock Text="Место" />
+                <TextBox Text="{Binding Place}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button Content="💳 Продать"  Margin="7" Width="150" Height="20" Background="Bisque" Click="Sell_Click"/>
+            <Button Content="❌ Отмена" Click="Cancel_Click" Margin="7" Width="150" Height="20" Background="Bisque"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

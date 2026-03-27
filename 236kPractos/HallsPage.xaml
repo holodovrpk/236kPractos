@@ -10,5 +10,27 @@
 
     <StackPanel>
         <TextBlock Text="Залы" FontSize="24" />
+
+        <ScrollViewer Height="350">
+            <ItemsControl x:Name="GroupHall" Width="600" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Background="Aquamarine" Margin="5">
+                            <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="ExtraBold"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Rows, StringFormat=Количество рядов: {0}}" FontSize="20" Width="400"/>
+                                <TextBlock Text="{Binding Places, StringFormat=Количество мест: {0}}" FontSize="20"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="🗑️" Margin="5" Click="Del_Click"/>
+                                <Button Content="✏️" Margin="5" Click="Edit_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Button Content="➕ Добавить новый зал" Margin="5" Click="Add_Click"/>
     </StackPanel>
 </Page>
